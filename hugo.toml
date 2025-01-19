@@ -16,10 +16,10 @@ theme = 'digitalgarden'
   name = 'Articles'
   url = '/articles'
   weight = 3
-# [[menu.main]]
-#   name = 'Portfolio'
-#   url = '/portfolio'
-#   weight = 4
+[[menu.main]]
+  name = 'About'
+  url = '/about'
+  weight = 4
 # [[menu.main]]
 #   name = 'Stack'
 #   url = '/stack'

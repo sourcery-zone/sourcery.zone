@@ -1,3 +1,20 @@
-* Hi
+---
+title: Homepage
+sidebar: false
+---
 
-This is my website
+Hey there! Welcome to [[/][Sourcery Zone]]. This is a personal project of
+mine, to help me grow in the areas I'm interested in. More
+specifically:
+
+1. [[https://en.wikipedia.org/wiki/Artificial_intelligence][Artificial Intelligence]]
+2. [[https://en.wikipedia.org/wiki/Robotics][Robotics]]
+3. [[https://en.wikipedia.org/wiki/Business][Business]] and [[https://en.wikipedia.org/wiki/Entrepreneurship][Entrepreneurship]]
+4. [[https://en.wikipedia.org/wiki/Computer_security][Cybersecurity]]
+
+Let's explore around:
+
++ [[/about][/about]]
++ [[/articles][/articles]]
++ [[https://github.com/sourcery-codes][/projects]]
+

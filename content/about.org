@@ -1,0 +1,15 @@
+#+TITLE: About
+
+[[/][Sourcery Zone]] is a personal project of mine to craft a [[https://en.wikipedia.org/wiki/Alter_ego][new ego]] around
+my interests without being limited by my [[https://paulgraham.com/identity.html][real life identity.]]
+
+In here, I'll write about my learning process, and outcome of the
+projects I build around them. The main subjects consist of:
+
+1. [[https://en.wikipedia.org/wiki/Artificial_intelligence][Artificial Intelligence]]
+2. [[https://en.wikipedia.org/wiki/Robotics][Robotics]]
+3. [[https://en.wikipedia.org/wiki/Business][Business]] and [[https://en.wikipedia.org/wiki/Entrepreneurship][Entrepreneurship]]
+4. [[https://en.wikipedia.org/wiki/Computer_security][Cybersecurity]]
+
+**Note:** I'll complete the content of this page gradually, like any
+  other pieces of this blog.

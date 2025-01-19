@@ -1,9 +1,13 @@
+{{ $sidebar := .Param "sidebar" | default true }}
+
 <!DOCTYPE html>
 <html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage">
 {{- partial "head.html" . -}}
 
-<body class="flex relative h-full min-h-screen">
-  {{- partial "sidebar.html" . -}}
+  <body class="flex relative h-full min-h-screen">
+    {{ if $sidebar }}
+      {{- partial "sidebar.html" . -}}
+    {{ end }}
   <!-- <div class="flex-1 max-w-full"> -->
     {{- block "main" . }}{{- end }}
   <!-- </div> -->
