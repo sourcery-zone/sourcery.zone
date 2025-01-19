@@ -3,12 +3,12 @@
     let
       version = "1.3.1";
 system = "x86_64-linux";
-devenv_root = "/home/shahin/sourcery/projects/blog.sourcery.zone";
+devenv_root = "/home/shahin/sourcery/projects/sourcery.zone";
 devenv_dotfile = ./.devenv;
 devenv_dotfile_string = ".devenv";
 container_name = null;
 devenv_tmpdir = "/run/user/1000";
-devenv_runtime = "/run/user/1000/devenv-d21ef5f";
+devenv_runtime = "/run/user/1000/devenv-4a26a6b";
 devenv_istesting = false;
 
         in {
@@ -24,12 +24,12 @@ devenv_istesting = false;
         let
           version = "1.3.1";
 system = "x86_64-linux";
-devenv_root = "/home/shahin/sourcery/projects/blog.sourcery.zone";
+devenv_root = "/home/shahin/sourcery/projects/sourcery.zone";
 devenv_dotfile = ./.devenv;
 devenv_dotfile_string = ".devenv";
 container_name = null;
 devenv_tmpdir = "/run/user/1000";
-devenv_runtime = "/run/user/1000/devenv-d21ef5f";
+devenv_runtime = "/run/user/1000/devenv-4a26a6b";
 devenv_istesting = false;
 
             devenv =
