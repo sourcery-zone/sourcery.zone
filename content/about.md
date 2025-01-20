@@ -15,5 +15,8 @@ projects I build around them. The main subjects consist of:
 3.  [Business](https://en.wikipedia.org/wiki/Business) and [Entrepreneurship](https://en.wikipedia.org/wiki/Entrepreneurship)
 4.  [Cybersecurity](https://en.wikipedia.org/wiki/Computer_security)
 
-****Note:**** I'll complete the content of this page gradually, like any
-  other pieces of this blog.
+<div class="note">
+
+This page is a work in progress, and will be updated over time.
+
+</div>
