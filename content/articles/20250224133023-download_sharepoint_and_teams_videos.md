@@ -1,0 +1,49 @@
+---
+title: "Download Sharepoint and Teams videos"
+author: ["Shahin"]
+date: 2025-02-24
+lastmod: 2025-02-24T14:43:51+01:00
+draft: false
+---
+
+## Problem {#problem}
+
+I recently needed to download a Teams meeting's recording from
+Sharepoint within my organization, and it wasn't possible due to my
+access level.
+
+I knew from a while back, that there was an all in one solution called
+[Sharedown](https://github.com/kylon/Sharedown) which uses [Puppeteer](https://pptr.dev/) to trigger a browser in order to
+download the media from a Microsoft Team account.
+
+However, the related package on [Nixpkgs](https://github.com/NixOS/nixpkgs/) for some reason couldn't be
+installed on my system, and I didn't have time to dig into it. So took
+my chances over internet, and the following is what I found.
+
+
+## Solution {#solution}
+
+The solution that worked for me, is mainly based on [This Gist](https://gist.github.com/mfd/c990a01d626847a6d7e823dceca598e1). First
+thing is to find the url to the manifest file of the video. This is
+the file that contains the urls to all parts of the video, and the web
+player will use it to download and play them.
+
+To get the manifest URL, open the developer console on your browser
+(`F12` is the fastest way), and then on Network tab, filter on
+`videomanifest`. The only url you see, is what you need.
+
+{{< figure src="/ox-hugo/_20250224-142800screenshot.png" >}}
+
+Right click and copy this url. Note that you don't need the full
+url. Use an editor (being a very long url, it's the safest bet), and
+remove everything after the first occurrence of `=dash`. Then use [yt-dlp](https://github.com/yt-dlp/yt-dlp)
+as follows:
+
+```shell
+yt-dlp "URL up until (including) =dash" -o video.mp4
+```
+
+Give it some time, and it'll take of the download. I'm not sure if the
+following behavior is general or limited to my case, but it first
+downloaded the audio and video in two separate files, and then merged
+them to a single file of ~450MB for 48 minutes.
