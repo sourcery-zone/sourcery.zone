@@ -6,11 +6,27 @@
 
   <link rel="icon" href="{{ if (isset .Site.Params "favicon") }}{{ .Site.Params.favicon }}{{ else }}/favicon.ico{{ end }}">
 
-  <title>
-    {{ block "title" . }} {{- .Title }} - {{ .Site.Title -}} {{ end }}
-  </title>
+  <title>{{ if .IsPage }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}</title>
 
-  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}" />
+  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+    <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:title" content="{{ if .IsPage }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+  <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta property="og:image" content="https://og.tailgraph.com/og?fontFamily=Roboto&title={{ if .IsPage }}{{ .Title | urlquery }}{{ else }}{{ .Site.Title | urlquery }}{{ end }}&titleTailwind=text-gray-800%20font-bold%20text-6xl&logoTailwind=h-8&bgTailwind=bg-white&footer=sourcery.zone&footerTailwind=text-teal-600">
+
+    <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="{{ .Site.BaseURL }}">
+  <meta property="twitter:url" content="{{ .Permalink }}">
+  <meta name="twitter:title" content="{{ if .IsPage }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+  <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta name="twitter:image" content="https://og.tailgraph.com/og?fontFamily=Roboto&title={{ if .IsPage }}{{ .Title | urlquery }}{{ else }}{{ .Site.Title | urlquery }}{{ end }}&titleTailwind=text-gray-800%20font-bold%20text-6xl&logoTailwind=h-8&bgTailwind=bg-white&footer=sourcery.zone&footerTailwind=text-teal-600">
+
+
+<!-- Meta Tags Generated via https://www.opengraph.xyz -->
   
   {{- if .Keywords }}
   <meta name="keywords" content="{{ delimit .Keywords "," }}" />
@@ -47,11 +63,4 @@
     ></script>
   {{ end }}
 
-  {{ template "_internal/opengraph.html" . }}
-
-  {{ template "_internal/twitter_cards.html" . }}
-
-  {{ template "_internal/schema.html" . }}
-
-  {{ template "_internal/schema.html" . }}
 </head>
