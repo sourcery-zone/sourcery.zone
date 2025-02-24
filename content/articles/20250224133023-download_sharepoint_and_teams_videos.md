@@ -2,7 +2,9 @@
 title: "Download Sharepoint and Teams videos"
 author: ["Shahin"]
 date: 2025-02-24
-lastmod: 2025-02-24T14:43:51+01:00
+lastmod: 2025-02-24T17:25:44+01:00
+tags: ["yt-dlp", "sharepoint", "teams"]
+categories: ["Quick Tips"]
 draft: false
 ---
 

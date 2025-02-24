@@ -43,13 +43,29 @@
       {{ $title := .Params.title }}
       <h1 class="!mb-2">{{ $title }}</h1>
 
-	  {{ if .Date }}
-      <p class="text-sm text-slate-500 !mb-8"> Planted {{ $date }}
-		{{ if ne $lastmod $date}}
-			<br/> Pruned {{ .Lastmod.Format "January 2, 2006" }}
+	  
+      <p class="text-sm text-slate-500 !mb-8">
+        {{ if .Date }}
+          Planted {{ $date }}
+		  {{ if ne $lastmod $date}}
+		    <br/> Pruned {{ .Lastmod.Format "January 2, 2006" }}
+          {{ end }}
         {{ end }}
-	  </p>
-      {{ end }}
+        <br/>
+        {{ with .Params.categories }}
+          Categories: {{ range $index, $category := . }}
+          {{- if $index }}, {{ end -}}
+            <a href="{{ "categories/" | relURL }}{{ $category | urlize }}" class="text-blue-600 hover:underline">{{ $category }}</a>
+          {{ end }}
+        {{ end }}
+        <br/>
+        {{ with .Params.tags }}
+          Tags:  {{ range $index, $tag := . }}
+          {{- if $index }}, {{ end -}}
+            <a href="{{ "tags/" | relURL }}{{ $tag | urlize }}" class="text-blue-600 hover:underline">{{ $tag }}</a>
+          {{ end }}
+        {{ end }}
+	  </p>      
 
       {{ with .Params.images }}
       {{- range first 1 . }}
@@ -58,6 +74,7 @@
       {{ end }}
 
       {{ .Content }}
+      <h2>Feedback</h2>
       <script src="https://utteranc.es/client.js"
         repo="shadow-sourcerer/sourcery.zone"
         issue-term="pathname"
