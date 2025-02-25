@@ -2,7 +2,7 @@
 :ID:       23dee9ee-1a86-4f5f-a6bd-02096ad7af8e
 :END:
 #+title: Fixing high resolution font aliasing for Wayland on NixOS
-date: 2025-02-25
+#+date: 2025-02-25
 #+hugo_draft: false
 #+hugo_auto_set_lastmod: t
 #+hugo_section: articles

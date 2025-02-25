@@ -1,14 +1,12 @@
 ---
 title: "Fixing high resolution font aliasing for Wayland on NixOS"
 author: ["Shahin"]
-lastmod: 2025-02-25T12:28:36+01:00
+date: 2025-02-25
+lastmod: 2025-02-25T12:31:25+01:00
 tags: ["wayland", "xwayland", "nixos"]
 categories: ["Quick Tips"]
 draft: false
 ---
-
-date: 2025-02-25
-
 
 ## Problem {#problem}
 
