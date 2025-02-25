@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       23dee9ee-1a86-4f5f-a6bd-02096ad7af8e
+:END:
+#+title: Fixing high resolution font aliasing for Wayland on NixOS
+date: 2025-02-25
+#+hugo_draft: false
+#+hugo_auto_set_lastmod: t
+#+hugo_section: articles
+#+hugo_categories: "Quick Tips"
+#+hugo_tags: wayland xwayland nixos
+
+** Problem
+With the progress on [[https://wayland.freedesktop.org/][Wayland]] architecture and the usability of its
+software ecosystem, I'm adapting it more and more. This is quite easy
+to achieve these days, specially with NixOS friendliness of
+[[https://hyprland.org/][Hyprland]]. However, I had a weird issue with my Framework 13th's high
+resolution monitor.
+
+The font's on Chrome based applications were looking pixelated, and
+specially in high res, it wasn't just the look of it which wasn't
+appealing, but I was losing the readability.
+
+** Solution
+
+The main reason for it seems to be related to [[https://wiki.archlinux.org/title/Wayland#Xwayland][XWayland]]. An [[https://en.wikipedia.org/wiki/X_server][X Server]],
+designed to run under Wayland, helping applicaitons, which don't have
+Wayland support out of the box.
+
+And apparently, Chrome related stuff, by default prefer to run on
+X. To address this, we can either set the following environment
+variable globally in NixOS:
+
+#+begin_src nix
+# somewhere in your NixOS configuration
+environment.sessionVariables.NIXOS_OZONE_WL = "1";
+#+end_src
+
+Or you can use ~chrome://flags~ and set the following per application:
+
+#+DOWNLOADED: screenshot @ 2025-02-25 12:26:48
+[[file:images/_20250225-122648screenshot.png]]
+
+This is of course not available for applications like Slack, which
+makes the environment variable setting a more promissing option.
+
+** Sources
+1. [[https://nixos.wiki/wiki/Slack][NixOS wiki: Slack]]
+2. [[https://github.com/NixOS/nixpkgs/issues/207984][nixpkgs#207984]]
