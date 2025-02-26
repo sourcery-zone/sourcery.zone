@@ -1,0 +1,181 @@
+:PROPERTIES:
+:ID:       6d8640d7-1f7e-4a29-8edd-cfcfd563f2e5
+:END:
+#+title: Blogging using Emacs Org Roam and Hugo
+#+hugo_draft: false
+#+hugo_auto_set_lastmod: t
+#+hugo_section: articles
+#+hugo_categories: "Quick Tips"
+#+hugo_tags: emacs org-mode org-roam hugo
+
+
+** Situation
+
+There are not many software preferences in my list that I can not
+easily replace with alternatives due to how intuitive they feel. [[https://orgmode.org][Org]]
+and [[https://gohugo.io/][Hugo]] are definitely among the top items of that list.
+
+Well, their integration, even though it has existed for a long time,
+is not the best out of the box. Also with the advancements of
+cross-article linking, I really wanted to have it in my new blog,
+which I'm going to use for daily blogging, and also publishing my long
+form notes and thoughts.
+
+Also knowing myself, I wanted to have the most straightforward setup,
+with as few external package as possible. So, here is how I do it:
+
+** My Setup
+*** Dependencies
+
+To install dependencies, I use [[https://devenv.sh][devenv]] like any other project I
+have. So I don't need to worry about forgetting stuff in the long
+run.
+
+First and foremost, I use it to install ~hugo~:
+#+begin_src nix
+packages = with pkgs; [
+  hugo
+]
+#+end_src
+
+But also to install modern web dev utilities for the blog template I
+use, so:
+
+#+begin_src nix
+let
+  nodejs-packages = with pkgs.nodePackages; [
+    vscode-langservers-extracted
+    postcss-cli
+  ]
+in {
+  name = ...;
+
+  ...
+  packages with pkgs; [
+    ...
+  ] ++ nodejs-packages;
+
+  languages.javascript.enable = true;
+}
+#+end_src
+
+Also to make it convenient (usually for when I'm updating something in
+the theme), I add the following [[https://devenv.sh/processes/][process]]:
+#+begin_src nix
+processes.hugo-watch.exec = "hugo server -D";
+#+end_src
+
+So I can ~devenv up~ and forget!
+
+*** [[https://orgroam.com][Org Roam]]
+
+The next thing of course is to set up org roam. There are many
+different custom setups one can apply (duh, it's [[https://www.gnu.org/savannah-checkouts/gnu/emacs/emacs.html][Emacs]] after all). And
+that doesn't much matter here. What matters is how we use Org Roam for
+this blog. So I create a ~.dir-locals.el~ to configure it specifically
+for the given directory, and this is what I have in it:
+
+#+begin_src emacs-lisp
+  ((org-mode . (
+           (eval . (let ((project-root (locate-dominating-file default-directory ".dir-locals.el")))
+                     ;; Set org-roam-directory to the 'roam' subdirectory of project-root
+                     (setq-local org-roam-directory (expand-file-name "roam" project-root))
+                     ;; Set org-roam-db-location inside org-roam-directory
+                     (setq-local org-roam-db-location (expand-file-name "org-roam.db" org-roam-directory))
+                     ;; Set org-hugo-base-dir to the 'content' sibling directory
+                     ;; Re-initialize org-roam to pick up new settings
+                     (when (fboundp 'org-roam-db-autosync-enable)
+                       (org-roam-db-autosync-enable))
+                     ;; Automatically invoke ox-hugo
+                     (org-hugo-auto-export-mode)
+                     )))
+        ))
+#+end_src
+
+I tried to describe it in the comments, but in general what it does,
+is to make sure it won't effect your main setup, and opens a new note
+vault (is that what it is called?) in the given path.
+
+Consequently, I can write my articles or notes using Org Roam, and
+have the cross links out of the box. Now I need to help Hugo
+understand it:
+
+*** [[https://ox-hugo.scripter.co/][Org Hugo]]
+
+A few more lines in the ~.dir-locals.el~, and that's also taken care of:
+
+#+begin_src emacs-lisp
+  ((org-mode . (
+           (eval . (let ((project-root (locate-dominating-file default-directory ".dir-locals.el")))
+                     ;; Set org-roam-directory to the 'roam' subdirectory of project-root
+                     (setq-local org-roam-directory (expand-file-name "roam" project-root))
+                     ;; Set org-roam-db-location inside org-roam-directory
+                     (setq-local org-roam-db-location (expand-file-name "org-roam.db" org-roam-directory))
+                     ;; Set org-hugo-base-dir to the 'content' sibling directory
+                     (setq-local org-hugo-base-dir (expand-file-name "." project-root))
+                     ;; Do not nest them, I use tags to identify blog
+                     ;; posts. I tried using sub directories, and it
+                     ;; started to fail on finding links
+                     (setq-local org-hugo-section "")
+                     ;; Ensure ox-hugo exports yaml FrontMatter
+                     (setq-local org-hugo-front-matter-format "yaml")
+                     ;; Re-initialize org-roam to pick up new settings
+                     (when (fboundp 'org-roam-db-autosync-enable)
+                       (org-roam-db-autosync-enable))
+                     ;; Automatically invoke ox-hugo
+                     (org-hugo-auto-export-mode)
+                     )))
+        ))
+#+end_src
+
+This package is an awesome way to translate your org vault into a Hugo
+friendly output. This config literally says, get every ~org~ file edited
+in this directory, and export it after saving to the ~content~ folder of
+the Hugo.
+
+However, I need a bit more control, in article level, where I want to
+put them into different folders according to their purpose. For that I
+use the following tag:
+
+#+begin_src org
++#hugo_section: articles
+#+end_src
+
+And that's it.
+
+*** [[https://github.com/abo-abo/org-download][Org Download]]
+
+Sometimes, I also need screenshots, and this package is what I use
+globally with my Emacss configuration.
+
+#+begin_src emacs-lisp
+  (leaf org-download
+    :url "https://github.com/abo-abo/org-download"
+    :doc "Drag and drop images to Emacs org-mode"
+    :ensure t
+    :after org
+    :custom
+    (org-download-method . 'direcory)
+    (org-download-heading-lvl . nil)
+    (org-download-timestamp . "_%Y%m%d-%H%M%S")
+    (org-image-actual-width . t)
+    (org-download-screenshot-method . "grim -g \"$(slurp)\" %s")
+    :config
+    (customize-set-variable 'org-download-image-dir "images")
+
+    (require 'org-download))
+#+end_src
+
+And then ~org-download-screenshot~ whenever I need it.
+
+*** Serving
+
+To serve, I push everything to [[https://github.com/shadow-sourcerer/sourcery.zone][GitHub.]] And from there, [[https://cloudflare.com][Cloudflare]]
+serves it over a worker.
+
+** How do I like it?
+
+Well, overall I like the simplicity of the approach. There are
+sometimes some hoops I need to jump to get what I need, but I assume
+I'll figure them out gradually and fix it. Just like any other aspect
+of this [[/about][project]].
