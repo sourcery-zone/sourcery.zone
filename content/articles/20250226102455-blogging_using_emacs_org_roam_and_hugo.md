@@ -1,7 +1,8 @@
 ---
 title: "Blogging using Emacs Org Roam and Hugo"
 author: ["Shahin"]
-lastmod: 2025-02-26T11:05:55+01:00
+date: 2025-02-26
+lastmod: 2025-02-26T11:09:17+01:00
 tags: ["emacs", "org-mode", "org-roam", "hugo"]
 categories: ["Quick Tips"]
 draft: false

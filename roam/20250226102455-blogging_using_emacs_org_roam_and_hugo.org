@@ -2,6 +2,7 @@
 :ID:       6d8640d7-1f7e-4a29-8edd-cfcfd563f2e5
 :END:
 #+title: Blogging using Emacs Org Roam and Hugo
+#+date: 2025-02-26
 #+hugo_draft: false
 #+hugo_auto_set_lastmod: t
 #+hugo_section: articles
