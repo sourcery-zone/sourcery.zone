@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       604798e9-3d0c-46b8-a226-ad3d6364a0b2
+:END:
+#+title: C man pages in NixOS
+#+date: 2025-03-04
+#+hugo_draft: false
+#+hugo_auto_set_lastmod: t
+#+hugo_section: articles
+#+hugo_categories: "Quick Tips"
+#+hugo_tags: nixos c
+
+Well, this one is simple. I was reading [[https://beej.us/guide/bgc/][Beej's guide to C programming]],
+and learned it's possible to read C compiler's documentation using man
+pages like:
+
+#+begin_src bash
+man 3 printf
+#+end_src
+
+But to my surprise I got:
+
+#+begin_src text
+❯ man 3 printf
+No manual entry for printf in section 3
+#+end_src
+
+And it turned out to enable it, I needed to, add the following
+packages to my system:
+
+#+begin_src nix
+glibcInfo  # look out for the capital `I`
+man-pages
+#+end_src
