@@ -1,0 +1,81 @@
+:PROPERTIES:
+:ID:       9242724c-3759-473c-872a-9504f569ae46
+:END:
+#+title: Calendar.org
+#+date: 2025-03-11
+#+hugo_draft: false
+#+hugo_auto_set_lastmod: t
+#+hugo_section: articles
+#+hugo_categories: "Quick Tips"
+#+hugo_tags: emacs org-mode org-roam
+
+** My Journey with Org Roam Journals
+
+It's a while now that I'm trying to use [[https://www.orgroam.com/][Org Roam]]'s journal to track my
+plans. For each day, I'll have a separate dated file, which I can open
+with a quick key combination, and if I need some info from other days,
+I'll use my project management tooling like [[https://github.com/yadex205/consult-ag][consult-ag]] to find what I
+need.
+
+This is of course not only for planning. I was using this setup, to
+also take notes, related to each piece of work, so I could also
+reflect on them relatively. But it was starting to feel cluttered, and
+more complex than I need it to be.
+
+** Discovering Calendar.txt
+
+Then I came across [[Https://terokarvinen.com/2021/calendar-txt/][calendar.txt]]. The idea is super simple and
+brilliant. Every day is a row in a text file, and using some code to
+indicate different type of activities. It's mainly optimized to be
+usable via terminal and so to say, ~grep~-able.
+
+It's fun, but I'm not very good at remembering acronyms and names, and
+prefer a more descriptive way. So, I thought how hard it could be to
+recreate this in [[https://orgmode.org][Org]].
+
+** Calendar.org Implementation
+
+So, basically, I need:
+
+#+begin_src text
+ * [2025-03-10 Mon]
+#+end_src
+
+And then I need to repeat this pattern for some times, let's say a
+year, so:
+
+#+begin_src text
+  M-x org-clone-subtree-with-time-shift (C-c C-x c)
+#+end_src
+
+It'll ask for a number of clones (I used 365), and a cycle, which I
+used (~+1d~), and as easy as that, the template is ready. Yeah, I was
+blown away when I learned about it. This is how it would look like:
+
+#+begin_src text
+   * [2025-03-10 Mon]
+   ** Morning routine
+     - [X] Meditation
+     - [X] Exercise
+     - [ ] Review day's priorities
+
+   ** Work
+     - [X] Team standup meeting
+     - [ ] Complete project proposal
+     CLOCK: [2025-03-10 Mon 09:30]--[2025-03-10 Mon 11:45] =>  2:15
+
+   ** Evening
+     - [ ] Read chapter of current book
+#+end_src
+
+So, how would the usability look like. This is of course not following
+single line approach, and I can go haywire with it. Screenshot, table,
+and everything else that I can embed in my org file, I can have
+here. But I can't ~grep~ it without some solid ~grep~ kong-fu.
+
+But do I really need it? There are many tools, to optimize the UX, and
+the plus side is, when I filter what I'm looking for, I can in-place
+update it as well. One interesting functionality which I haven't used
+much before, is narrowing. I go to the sub-tree I'm working on,
+clock-in (yeah, fancy time tracking), and then ~C-x n s~ to hide
+everything else, so I only see what I want.
