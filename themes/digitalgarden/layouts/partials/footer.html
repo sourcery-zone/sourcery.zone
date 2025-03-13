@@ -1,3 +1,4 @@
 {{ $built := resources.Get "js/main.js" | js.Build "main.js" }}
 <script type="text/javascript" src="{{ $built.RelPermalink }}" defer></script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="87332d02-59a2-4886-8187-6cfe800a9d88"></script>
 {{ template "_internal/google_analytics.html" . }}
