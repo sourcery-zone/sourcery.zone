@@ -73,7 +73,7 @@ url = "/index.xml"
   # ignore this parameter, or leave it blank, the default value is set
   # to 'auto'.  You can take a look at layouts/index.html for more
   # information.
-  description = "Personal project of traversing the intersection of AI, Robotics and Cyber Security."
+  description = "This persona is a personal project to traverse the intersection of AI, Robotics and Cybersecurity as a software engineer."
   mainSections = ['articles']
   toc = true # set to false to disable table of contents 'globally'
   tocOpen = false # set to true to open table of contents by default
@@ -95,7 +95,7 @@ url = "/index.xml"
   # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
   intro = "Sourcery Zone"
   name = "The Operator"
-  description = "Personal project of traversing the intersection of AI, Robotics and Cyber Security."
+  description = "This persona is a personal project to traverse the intersection of AI, Robotics and Cybersecurity as a software engineer."
 
 # Allow to override webmanifest options
 [Languages.en-us.params.webmanifest]
