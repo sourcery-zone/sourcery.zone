@@ -67,7 +67,7 @@ url = "/index.xml"
 
 [Languages.en-us.params]
   sitename = "Sourcery Zone"
-  defaultColor = "dark" # set color mode: dark, light, auto
+  defaultColor = "auto" # set color mode: dark, light, auto
   # Setting it to 'auto' applies the color scheme based on the
   # visitor's device color preference.If you don't specify anything,
   # ignore this parameter, or leave it blank, the default value is set
