@@ -16,6 +16,27 @@
             <div class="page-content">
                 {{ .Content }}
             </div>
+            <div class="post-meta">
+                {{ with .Params.categories }}
+                <p class="text-sm text-slate-500 !mb-2">
+                    Categories:
+    {{ range $index, $category := . }}
+      {{- if $index }}, {{ end -}}
+                    <a href="{{ "categories/" | relURL }}{{ $category | urlize }}" class="text-blue-600 hover:underline">{{ $category }}</a>
+                    {{ end }}
+                </p>
+                {{ end }}
+
+                    {{ with .Params.tags }}
+                <p class="text-sm text-slate-500 !mb-2">
+                    Tags:
+    {{ range $index, $tag := . }}
+      {{- if $index }}, {{ end -}}
+                    <a href="{{ "tags/" | relURL }}{{ $tag | urlize }}" class="text-blue-600 hover:underline">{{ $tag }}</a>
+                    {{ end }}
+                </p>
+                {{ end }}
+            </div>
         </article>
         {{- partial "comments.html" . -}}
     </main>
