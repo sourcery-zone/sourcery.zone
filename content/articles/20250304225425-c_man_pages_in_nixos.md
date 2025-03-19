@@ -1,8 +1,9 @@
 ---
 title: "C man pages in NixOS"
 author: ["Shahin"]
+description: "This is the first time I didn't have them by default!"
 date: 2025-03-04
-lastmod: 2025-03-04T22:57:42+01:00
+lastmod: 2025-03-19T14:02:03+01:00
 tags: ["nixos", "c"]
 categories: ["Quick Tips"]
 draft: false

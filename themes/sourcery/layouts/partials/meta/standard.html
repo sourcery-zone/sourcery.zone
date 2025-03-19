@@ -34,17 +34,29 @@
 {{/*  Define empty variable image  */}}
 {{- $image := "" -}}
 
-{{/*  If image is defined in front matter, use it  */}}
-{{- if .Params.image -}}
-  {{- $image = .Params.image -}}
-{{/*  If image is not defined in front matter, use site ogimage  */}}
-{{- else if .Site.Params.ogimage -}}
-  {{- $image = .Site.Params.ogimage -}}
-{{- end -}}
+<!-- {{/*  If image is defined in front matter, use it  */}} -->
+<!-- {{- if .Params.image -}} -->
+<!--   {{- $image = .Params.image -}} -->
+<!-- {{/*  If image is not defined in front matter, use site ogimage  */}} -->
+<!-- {{- else if .Site.Params.ogimage -}} -->
+<!--   {{- $image = "https://og.tailgraph.com/og?fontFamily=Roboto&title={{ if .IsPage }}{{ .Title | urlquery }}{{ else }}{{ .Site.Title | urlquery }}{{ end }}&titleTailwind=text-gray-800%20font-bold%20text-6xl&logoTailwind=h-8&bgTailwind=bg-white&footer=sourcery.zone&footerTailwind=text-teal-600" -}} -->
+<!-- {{- end -}} -->
 
-{{- if $image -}}
-<meta itemprop="image" content="{{ $image | absURL }}" />
-<meta property="og:image" content="{{ $image | absURL }}" />
-<meta name="twitter:image" content="{{ $image | absURL }}" />
-<meta name="twitter:image:src" content="{{ $image | absURL }}" />
-{{- end -}}
+{{ $title := "" }}
+{{ if .IsPage }}
+  {{ $title = .Title | urlquery }}
+{{ else }}
+  {{ $title = .Site.Title | urlquery }}
+{{ end }}
+
+{{ $description := .Params.description | default .Site.Params.description | urlquery }}
+
+{{ $ogImageBase := "https://og.tailgraph.com/og?fontFamily=Poppins&title=" }}
+{{ $ogImageParams := "&titleTailwind=text-gray-800%20font-bold%20text-6xl&text=" }}
+{{ $ogTextParams := "&textTailwind=text-gray-700%20text-2xl%20mt-4&logoUrl=https%3A%2F%2Fsourcery.zone%2Favatar_hu4ba6c113e7626540ae1358faf5b8cbe4_194166_70x70_fill_q75_h2_box_center_3.webp&logoTailwind=rounded-%5B10px%5D%20w-%5B150px%5D&bgTailwind=bg-lime-50&footer=sourcery.zone&footerTailwind=text-teal-600%20text-3xl%20font-black" }}
+{{ $ogImage := print $ogImageBase $title $ogImageParams $description $ogTextParams }}
+
+<meta itemprop="image" content="{{ $ogImage }}" />
+<meta property="og:image" content="{{ $ogImage }}" />
+<meta name="twitter:image" content="{{ $ogImage }}" />
+<meta name="twitter:image:src" content="{{ $ogImage }}" />

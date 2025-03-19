@@ -8,7 +8,7 @@
 #+hugo_section: articles
 #+hugo_categories: "Quick Tips"
 #+hugo_tags: emacs org-mode org-roam hugo
-
+#+description: The setup of this very blog.
 
 ** Situation
 

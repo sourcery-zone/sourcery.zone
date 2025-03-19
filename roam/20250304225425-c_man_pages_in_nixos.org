@@ -8,6 +8,7 @@
 #+hugo_section: articles
 #+hugo_categories: "Quick Tips"
 #+hugo_tags: nixos c
+#+description: This is the first time I didn't have them by default!
 
 Well, this one is simple. I was reading [[https://beej.us/guide/bgc/][Beej's guide to C programming]],
 and learned it's possible to read C compiler's documentation using man

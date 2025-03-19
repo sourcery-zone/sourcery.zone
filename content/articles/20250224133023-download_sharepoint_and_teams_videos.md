@@ -1,8 +1,9 @@
 ---
 title: "Download Sharepoint and Teams videos"
 author: ["Shahin"]
+description: "A quick tip on how to download videos from Microsoft Teams."
 date: 2025-02-24
-lastmod: 2025-02-24T17:25:44+01:00
+lastmod: 2025-03-19T14:00:24+01:00
 tags: ["yt-dlp", "sharepoint", "teams"]
 categories: ["Quick Tips"]
 draft: false

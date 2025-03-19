@@ -8,7 +8,7 @@
 #+hugo_section: articles
 #+hugo_categories: "Opinion"
 #+hugo_tags: software consultancy
-
+#+description: A personal rant on the current culture of the software industry.
 ** Intro
 
 Innovation. A word that dominates discussions in the software

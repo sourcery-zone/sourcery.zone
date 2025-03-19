@@ -1,8 +1,9 @@
 ---
 title: "From Hackers to PowerPoint Warriors: The Decline of Engineering Culture"
 author: ["Shahin"]
+description: "A personal rant on the current culture of the software industry."
 date: 2025-03-05
-lastmod: 2025-03-05T15:45:53+01:00
+lastmod: 2025-03-19T14:02:50+01:00
 tags: ["software", "consultancy"]
 categories: ["Opinion"]
 draft: false

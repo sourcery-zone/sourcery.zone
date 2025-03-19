@@ -8,6 +8,7 @@
 #+hugo_section: articles
 #+hugo_categories: "Quick Tips"
 #+hugo_tags: wayland xwayland nixos
+#+description: The power of a single environment variable to help your eyes not going crazy!
 
 ** Problem
 With the progress on [[https://wayland.freedesktop.org/][Wayland]] architecture and the usability of its

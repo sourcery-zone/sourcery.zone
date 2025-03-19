@@ -8,6 +8,7 @@
 #+hugo_section: articles
 #+hugo_categories: "Quick Tips"
 #+hugo_tags: emacs org-mode org-roam
+#+description: A simple approach to tracking the daily occupation using Org-Mode.
 
 ** My Journey with Org Roam Journals
 

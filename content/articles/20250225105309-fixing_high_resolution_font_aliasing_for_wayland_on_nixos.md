@@ -1,8 +1,9 @@
 ---
 title: "Fixing high resolution font aliasing for Wayland on NixOS"
 author: ["Shahin"]
+description: "The power of a single environment variable to help your eyes not going crazy!"
 date: 2025-02-25
-lastmod: 2025-02-25T12:31:25+01:00
+lastmod: 2025-03-19T14:01:19+01:00
 tags: ["wayland", "xwayland", "nixos"]
 categories: ["Quick Tips"]
 draft: false

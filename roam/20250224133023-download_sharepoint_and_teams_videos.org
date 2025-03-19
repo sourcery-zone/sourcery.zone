@@ -8,6 +8,7 @@
 #+hugo_section: articles
 #+hugo_categories: "Quick Tips"
 #+hugo_tags: yt-dlp sharepoint teams
+#+description: A quick tip on how to download videos from Microsoft Teams.
 
 ** Problem
 I recently needed to download a Teams meeting's recording from

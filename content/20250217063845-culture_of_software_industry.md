@@ -1,10 +1,11 @@
-:PROPERTIES:
-:ID:       18f7db62-1bed-44cb-a09f-f99cfed683dc
-:END:
-#+title: Culture of Software Industry
-#+date: 2025-02-17T06:27:08+01:00
-#+hugo_draft: true
-#+hugo_auto_set_lastmod: t
+---
+title: "Culture of Software Industry"
+author: ["Shahin"]
+description: "A personal rant on the current state of software industry."
+date: 2025-02-17T06:27:08+01:00
+lastmod: 2025-03-19T13:59:52+01:00
+draft: true
+---
 
 Intention: Knowing the flaws of human interaction and ambition in
 today's software industry, and how it hurts the culture.
@@ -56,10 +57,9 @@ of the problem, one way or another. It'd become so difficult after a
 while to brave it out, and fight against the issue.
 
 We see a lot of such signs recently. From technical decisions listed
-in [[https://antirez.com/news/145][We are destroying software]], to open source dramas happening all
+in [We are destroying software](https://antirez.com/news/145), to open source dramas happening all
 over the industry, shows one clear fact: We've lost mutual
 understanding, and nurtured a culture of mistrust and fake
 competition. Software or computer industry is not nurturing innovation
 for the sake of advancement, but only repeating itself to gain more
 power and profit. That's what corrupts everything.
-
