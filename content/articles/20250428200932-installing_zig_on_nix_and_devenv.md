@@ -2,13 +2,12 @@
 title: "Installing Zig on Nix and Devenv"
 author: ["Shahin"]
 description: "How to install latest tagged and nightly versions of Zin in NixOS"
-lastmod: 2025-04-28T20:19:39+02:00
+date: 2025-28-04
+lastmod: 2025-04-28T20:22:03+02:00
 tags: ["nixos", "devenv", "zig"]
 categories: ["Quick Tips"]
 draft: false
 ---
-
-date: 2025-28-04
 
 I just wanted to give [zig](https://ziglang.org/) a try using [Ziglings](https://codeberg.org/ziglings/exercises/#ziglings), and realized the
 latest available of this programming language on Nix package

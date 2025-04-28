@@ -2,7 +2,7 @@
 :ID:       5e29648e-dad5-4ab0-8baa-d62f6f0a1614
 :END:
 #+title: Installing Zig on Nix and Devenv
-date: 2025-28-04
+#+date: 2025-28-04
 #+hugo_draft: false
 #+hugo_auto_set_lastmod: t
 #+hugo_section: articles
